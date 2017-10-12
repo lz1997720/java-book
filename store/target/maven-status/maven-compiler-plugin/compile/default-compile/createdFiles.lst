@@ -1,0 +1,13 @@
+com\store\service\serviceImpl\OrdersServiceImpl.class
+com\store\model\Goods.class
+com\store\model\Category.class
+com\store\mapper\GoodsMapper.class
+com\store\service\GoodsService.class
+com\store\controller\GoodsController.class
+com\store\model\Orders.class
+com\store\service\OrdersService.class
+com\store\controller\OrdersController.class
+com\store\dto\OrdersDTO.class
+com\store\mapper\OrdersMapper.class
+com\store\dto\ShoppingDTO.class
+com\store\dto\GoodsCategoryDTO.class
