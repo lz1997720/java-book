@@ -44,7 +44,7 @@ public class FileDemo {
 //		File file7 = new File("D:\\aaa\\bbb\\ccc\\ddd");
 //		System.out.println("mkdirs:" + file7.mkdirs());
 		
-		// 注意下面的这个东西：
+		// 注意下面的这个东西：注意创建文件夹还是文件
 	    File file8 = new File("D:\\liuyi\\a.txt");
 		System.out.println("mkdirs:" + file8.mkdirs());
 		
