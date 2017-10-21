@@ -20,7 +20,7 @@ public class BufferedOutputStreamDemo {
 
 	public static void main(String[] args) throws IOException {
 		//BufferedOutputStream(OutputStream out)
-		FileOutputStream fos = new FileOutputStream("fox.txt");
+		FileOutputStream fos = new FileOutputStream("bos.txt");
 		BufferedOutputStream bos = new BufferedOutputStream(fos);
 		
 		//Ð´Êý¾Ý
