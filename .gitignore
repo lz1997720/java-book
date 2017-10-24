@@ -1,0 +1,6 @@
+/last/
+/target/
+*.classpath
+*.project
+*.settings
+/Test/
