@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>人物跑动画面</title>
+<style type="text/css">
+.im{
+			position: absolute;
+			top:50%;
+			left:50%;
+			width: 100px;
+			height: 100px;
+		}
+
+		div{
+			border: solid 2px red;
+			position: absolute;
+			left:1000px;
+			top:40px;
+			width:250px;
+			height: 150px;
+			padding-left: 5px;
+		}
+
+		li{
+			list-style-type:none;
+		}
+
+		input{
+			
+			height: 30px;
+			width: 40px;
+		}
+		
+		.left,.stop,.right{
+			display: inline;
+		}
+
+		input:hover{
+			background-color:blue;
+		}
+
+		ul.first_ul > li{
+			
+			background-color: yellow;
+			padding: 5px 10px;
+		}
+
+		.first_ul{
+			padding: 0px 5px;
+		}
+		
+		.top,.down{
+			margin: 0px 85px;
+		}
+
+
+</style>
+<body>
+	<img class="im" src="img/down-0.png" />
+	<div>
+		<ul class="first_ul">
+			<li class="li_fl"><input class="top" type="submit" value="上">
+			</li>
+			<li>
+				<ul>
+					<li class="left">
+					<input class="a_left" type="submit"value="左" />
+					</li>
+					<li class="stop">
+					<input class="a_stop" type="submit"value="停止" />
+					</li>
+					<li class="right">
+					<input class="a_right" type="submit"value="右" />
+					</li>
+				</ul>
+			</li>
+			<li>
+				<input class="down" type="submit" value="下">
+			</li>
+		</ul>
+	</div>
+</body>
+</head>
+</html>
