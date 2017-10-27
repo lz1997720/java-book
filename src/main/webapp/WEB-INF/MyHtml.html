@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTf-8">
 <title>人物跑动画面</title>
 <style type="text/css">
 .im {
@@ -54,7 +54,7 @@ ul.first_ul>li {
 </style>
 </head>
 <body>
-	<img class="im" src="img/down-0.png" />
+	<img class="im" id="im" src="img/down-0.png" />
 	<div>
 		<ul class="first_ul">
 			<li class="li_fl"><input class="a_top" type="submit" value="上" />
@@ -63,7 +63,7 @@ ul.first_ul>li {
 			<li>
 				<ul>
 					<li class="zhong_left"><input class="a_left" type="submit"
-						value="左" /></li>
+						onclick="a()" value="左" /></li>
 					<li class="zhong_stop"><input class="a_stop" type="submit"
 						value="停止" /></li>
 					<li class="zhong_right"><input class="a_right" type="submit"
@@ -76,25 +76,90 @@ ul.first_ul>li {
 	</div>
 	<script src="jquery-1.10.2.js"></script>
 	<script>
-		$(document).ready(function(){
-			var flag = 4;//标志人物停下来的样子
-			var i = 0;
-			var left_go = 0;
-			var top_go = 0;
-			var clear = null;
-			$(".a_stop").on("click",function(){
+		var flag = 4; //标志停下来的人物的样子
+		var i = 0;
+		var left_go = 0;
+		var top_go = 0;
+		var clear = null;
+
+		function a() {
+			i = 0;
+			flag = 1;
+			clearInterval(clear);
+			var element = document.getElementById('im');
+			element.src = "img/" + "left" + "-" + i + ".png";
+			clear = setInterval(function() {
+				if (++i == 4)
+					i = 1;
+				element.src = "img/" + "left" + "-" + i + ".png";
+				var m = $(".im").offset().left - 6 + "px";
+				$(".im").css("left", m);
+			}, 200);
+		}
+		$(document).ready(function() {
+
+			$(".a_stop").on("click", function() {
 				i = 0;
-				switch()
-				{
-				case 1:$(".im").attr("src","img/" + "left" + "-" + i +".png");break;
-				case 2:$(".im").attr("src","img/" + "right" + "-" + i +".png");break;
-				case 3:$(".im").attr("src","img/" + "up" + "-" + i +".png");break;
-				case 4:$(".im").attr("src","img/" + "down" + "-" + i +".png");break;
+				switch (flag) {
+				case 1:
+					$(".im").attr("src", "img/" + "left" + "-" + i + ".png");
+					break;
+				case 2:
+					$(".im").attr("src", "img/" + "right" + "-" + i + ".png");
+					break;
+				case 3:
+					$(".im").attr("src", "img/" + "up" + "-" + i + ".png");
+					break;
+				case 4:
+					$(".im").attr("src", "img/" + "down" + "-" + i + ".png");
+					break;
 				}
-			})
-			
-		})
+				clearInterval(clear);
+			});
+
+			$(".a_right").on("click", function() {
+				i = 0;
+				flag = 2;
+				$(".im").attr("src", "img/" + "right" + "-" + i + ".png");
+				clearInterval(clear);
+				clear = setInterval(function() {
+					if (++i == 4)
+						i = 1;
+					$(".im").attr("src", "img/" + "right" + "-" + i + ".png");
+					var m = $(".im").offset().left + 6 + "px";
+					$(".im").css("left", m);
+				}, 200);
+			});
+
+			$(".a_top").on("click", function() {
+				i = 0;
+				flag = 3;
+				$(".im").attr("src", "img/" + "up" + "-" + i + ".png");
+				clearInterval(clear);
+				clear = setInterval(function() {
+					if (++i == 4)
+						i = 1;
+					$(".im").attr("src", "img/" + "up" + "-" + i + ".png");
+					var m = $(".im").offset().top - 6 + "px";
+					$(".im").css("top", m);
+				}, 200);
+			});
+
+			$(".a_down").on("click", function() {
+				i = 0;
+				flag = 4;
+				$(".im").attr("src", "img/" + "down" + "-" + i + ".png");
+				clearInterval(clear);
+				clear = setInterval(function() {
+					if (++i == 4)
+						i = 1;
+					$(".im").attr("src", "img/" + "down" + "-" + i + ".png");
+					var m = $(".im").offset().top + 6 + "px";
+					$(".im").css("top", m);
+				}, 200);
+			});
+
+		});
 	</script>
 </body>
-</head>
 </html>
