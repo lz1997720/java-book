@@ -57,21 +57,21 @@ ul.first_ul>li {
 	<img class="im" id="im" src="img/down-0.png" />
 	<div>
 		<ul class="first_ul">
-			<li class="li_fl"><input class="a_top" type="submit" value="上" />
+			<li class="li_fl"><input class="a_top" type="submit" onclick = "a_top()" value="上" />
 			</li>
 
 			<li>
 				<ul>
 					<li class="zhong_left"><input class="a_left" type="submit"
-						onclick="a()" value="左" /></li>
+						onclick = "a_left()" value="左" /></li>
 					<li class="zhong_stop"><input class="a_stop" type="submit"
 						value="停止" /></li>
 					<li class="zhong_right"><input class="a_right" type="submit"
-						value="右" /></li>
+						onclick = "a_right()" value="右" /></li>
 				</ul>
 			</li>
 
-			<li><input class="a_down" type="submit" value="下" /></li>
+			<li><input class="a_down" type="submit" onclick="a_down()" value="下" /></li>
 		</ul>
 	</div>
 	<script src="jquery-1.10.2.js"></script>
@@ -82,7 +82,7 @@ ul.first_ul>li {
 		var top_go = 0;
 		var clear = null;
 
-		function a() {
+		function a_left() {
 			i = 0;
 			flag = 1;
 			clearInterval(clear);
@@ -94,6 +94,48 @@ ul.first_ul>li {
 				element.src = "img/" + "left" + "-" + i + ".png";
 				var m = $(".im").offset().left - 6 + "px";
 				$(".im").css("left", m);
+			}, 200);
+		}
+		function a_right() {
+			i = 0;
+			flag = 2;
+			clearInterval(clear);
+			var element = document.getElementById('im');
+			element.src = "img/" + "right" + "-" + i + ".png";
+			clear = setInterval(function() {
+				if (++i == 4)
+					i = 1;
+				element.src = "img/" + "right" + "-" + i + ".png";
+				var m = $(".im").offset().left + 6 + "px";
+				$(".im").css("left", m);
+			}, 200);
+		}
+		function a_top() {
+			i = 0;
+			flag = 3;
+			clearInterval(clear);
+			var element = document.getElementById('im');
+			element.src = "img/" + "up" + "-" + i + ".png";
+			clear = setInterval(function() {
+				if (++i == 4)
+					i = 1;
+				element.src = "img/" + "up" + "-" + i + ".png";
+				var m = $(".im").offset().top - 6 + "px";
+				$(".im").css("top", m);
+			}, 200);
+		}
+		function a_down() {
+			i = 0;
+			flag = 4;
+			clearInterval(clear);
+			var element = document.getElementById('im');
+			element.src = "img/" + "down" + "-" + i + ".png";
+			clear = setInterval(function() {
+				if (++i == 4)
+					i = 1;
+				element.src = "img/" + "down" + "-" + i + ".png";
+				var m = $(".im").offset().top + 6 + "px";
+				$(".im").css("top", m);
 			}, 200);
 		}
 		$(document).ready(function() {
@@ -115,48 +157,6 @@ ul.first_ul>li {
 					break;
 				}
 				clearInterval(clear);
-			});
-
-			$(".a_right").on("click", function() {
-				i = 0;
-				flag = 2;
-				$(".im").attr("src", "img/" + "right" + "-" + i + ".png");
-				clearInterval(clear);
-				clear = setInterval(function() {
-					if (++i == 4)
-						i = 1;
-					$(".im").attr("src", "img/" + "right" + "-" + i + ".png");
-					var m = $(".im").offset().left + 6 + "px";
-					$(".im").css("left", m);
-				}, 200);
-			});
-
-			$(".a_top").on("click", function() {
-				i = 0;
-				flag = 3;
-				$(".im").attr("src", "img/" + "up" + "-" + i + ".png");
-				clearInterval(clear);
-				clear = setInterval(function() {
-					if (++i == 4)
-						i = 1;
-					$(".im").attr("src", "img/" + "up" + "-" + i + ".png");
-					var m = $(".im").offset().top - 6 + "px";
-					$(".im").css("top", m);
-				}, 200);
-			});
-
-			$(".a_down").on("click", function() {
-				i = 0;
-				flag = 4;
-				$(".im").attr("src", "img/" + "down" + "-" + i + ".png");
-				clearInterval(clear);
-				clear = setInterval(function() {
-					if (++i == 4)
-						i = 1;
-					$(".im").attr("src", "img/" + "down" + "-" + i + ".png");
-					var m = $(".im").offset().top + 6 + "px";
-					$(".im").css("top", m);
-				}, 200);
 			});
 
 		});
